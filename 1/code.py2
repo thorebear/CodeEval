@@ -1,0 +1,29 @@
+import argparse
+
+def getCode(v, x, y):
+    if v % x == 0:
+        if v % y == 0:
+            return "FB"
+        else:
+            return "F"
+    else:
+        if v % y == 0:
+            return "B"
+        else:
+            return str(v)
+
+parser = argparse.ArgumentParser(description='Filename.')
+parser.add_argument('filename', type=str)
+args = parser.parse_args()
+with open(args.filename) as f:
+    line = f.readline()
+    while line != "":
+        list = line.split()
+        x = int(list[0])
+        y = int(list[1])
+        n = int(list[2])
+        print " ".join([getCode(v,x,y) for v in xrange(1, n + 1)])
+        line = f.readline()
+
+
+    
